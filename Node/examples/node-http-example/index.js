@@ -18,9 +18,8 @@ const server = createServer((req, res) => {
   } else {
     res.writeHead(404, {'Content-Type': 'text/plain'});
     res.write(`${req.url} Not Found`);
+    res.end();
   }
-
-  res.end();
 });
 
 server.listen(4200);
