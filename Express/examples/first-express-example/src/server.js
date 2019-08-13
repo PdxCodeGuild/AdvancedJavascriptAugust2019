@@ -5,12 +5,20 @@ const cors = require("cors");
 
 const app = express();
 
+// Jason fake configurable middleware!
+const jason = (options = {}) => (req, res, next) => {
+  console.log(options.message || "Default message!");
+  next();
+}
+
 // Parses JSON data bodies
 app.use(express.json());
 // Added request logging
 app.use(morgan("tiny"));
 // Allows for CORS
 app.use(cors());
+// Use jason
+// app.use(jason({message: "Hello from my middleware!"}));
 
 app.get('/', (req, res) => {
   res.send({class: "Advanced Bowling!"});
