@@ -28,7 +28,7 @@ const connectDatabase = async (databaseName) => {
 }
 
 const startServer = async (port = 8000, hostname = "localhost") => {
-  await connectDatabase("todolist-api");
+  await connectDatabase("user-example");
 
   app.listen(port, hostname, () => {
     console.log(`🚀 Listening at ${hostname}:${port}...`);
