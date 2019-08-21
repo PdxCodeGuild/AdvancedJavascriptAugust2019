@@ -22,14 +22,18 @@ const loginValidators = [
 const sanitizeUser = (user) => ({
   ...user.toJSON(),
   password: undefined,
-})
+});
 
-controller.post("/sign-up", [...signUpValidators], async (req, res) => {
+const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).send({ errors: errors.array() });
+  } else {
+    next();
   }
-  
+}
+
+controller.post("/sign-up", [...signUpValidators, handleValidationErrors], async (req, res) => {
   const { username, password, passwordCheck } = req.body;
   
   const userFound = await User.findOne({username});
@@ -51,12 +55,7 @@ controller.post("/sign-up", [...signUpValidators], async (req, res) => {
   res.send(sanitizeUser(user));
 });
 
-controller.post('/login', [...loginValidators], async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(422).send({ errors: errors.array() });
-  }
-
+controller.post('/login', [...loginValidators, handleValidationErrors], async (req, res) => {
   const { username, password } = req.body;
 
   const user = await User.findOne({ username });

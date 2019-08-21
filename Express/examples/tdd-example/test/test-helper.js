@@ -1,3 +1,4 @@
+// Setup our environment variable ENV to equal "test"
 process.env.ENV = "test";
 
 const mocha = require("mocha");
