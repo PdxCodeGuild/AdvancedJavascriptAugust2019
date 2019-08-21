@@ -21,7 +21,7 @@ const connectDatabase = async (databaseName) => {
       useCreateIndex: true
     })
 
-    console.log(`🎒 Connected to database "${databaseName}"...`);
+    if(process.env.ENV !== "test") console.log(`🎒 Connected to database "${databaseName}"...`);
     return connection;
   } catch(err) {
     console.error(err);

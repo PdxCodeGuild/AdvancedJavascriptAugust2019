@@ -9,7 +9,7 @@ const { connectDatabase } = require("../src/server");
 
 chai.use(chaiHttp);
 
-// Drop and our test database
+// Setup global test db
 setTimeout(() => {
   before(async () => {
     await connectDatabase("tdd-example-test");
