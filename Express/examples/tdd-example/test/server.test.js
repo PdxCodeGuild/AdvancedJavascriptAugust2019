@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const { app } = require("../src/server");
 
-describe("auth.controller.js", () => {
+describe("auth.controller.js", function() {
   it("should allow valid users to sign-up", async () => {
     const response = await chai
       .request(app)
@@ -50,7 +50,7 @@ describe("auth.controller.js", () => {
     expect(user.username).to.equal("testmctest");
   });
 
-  it("should not allow users to login with the wrong password", async() => {
+  it("should not allow users to login with the wrong password", async () => {
     const response = await chai
       .request(app)
       .post("/auth/login")
@@ -62,7 +62,7 @@ describe("auth.controller.js", () => {
     expect(response.status).to.equal(403);
   });
 
-  it("should not allow users to login who don't exist", async() => {
+  it("should not allow users to login who don't exist", async () => {
     const response = await chai
       .request(app)
       .post("/auth/login")
