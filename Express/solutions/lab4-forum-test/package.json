@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --reporter=html --reporter=text mocha ./test/**/*.test.js --require=./test/test-helper.js --exit"
+    "test": "nyc --reporter=html --reporter=text mocha ./test/**/*.test.js --require=./test/test-helper.js --exit --timeout=10000"
   },
   "keywords": [],
   "author": "",

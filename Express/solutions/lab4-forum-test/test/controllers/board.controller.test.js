@@ -134,4 +134,35 @@ describe("src/controllers/board.controller.js", () => {
     
     expect(res.status).to.eq(401);
   });
+
+  it("DELETE /board/:_id: should delete", async function() {
+    const res = await chai
+      .request(app)
+      .delete("/board/" + this.board._id)
+      .set("Authorization", `Bearer ${this.token}`);
+
+    expect(res.status).to.eq(200);
+    expect(res.body.name).to.eq("Board");
+  });
+
+  it("DELETE /board/:_id: 404", async function() {
+    const res = await chai
+      .request(app)
+      .delete("/board/" + new ObjectId())
+      .set("Authorization", `Bearer ${this.token}`);
+
+    expect(res.status).to.eq(404);
+  });
+
+  it("DELETE /board/:_id: invalid token", async function() {
+    const res = await chai
+      .request(app)
+      .delete("/board/" + this.board._id);
+
+    expect(res.status).to.eq(401);
+  });
 });
+
+module.exports = {
+  createBoard,
+}

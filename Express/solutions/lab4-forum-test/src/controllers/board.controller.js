@@ -16,7 +16,6 @@ const updateValidators = [
 // Le de LCRUD
 router.get("/", async (req, res) => {
   const boards = await Board.find();
-
   res.send(boards);
 });
 
@@ -72,7 +71,7 @@ router.delete("/:_id", jwtMiddleware, async (req, res) => {
   const board = await Board.findOne({ _id });
   
   if(!board) return res.sendStatus(404);
-  if(req.user._id !== board.user._id) return res.sendStatus(401);
+  if(!req.user._id.equals(board.user._id)) return res.sendStatus(401);
 
   await board.remove();
 

@@ -11,10 +11,6 @@ const createValidators = [
   check("board").exists(),
   check("user").exists(),
 ];
-const updateValidators = [
-  check("title").exists(),
-  check("body").exists(),
-];
 
 // Le de LCRUD
 router.get("/", async (req, res) => {
@@ -47,15 +43,15 @@ router.get("/:_id", async (req, res) => {
 });
 
 // Le update 
-router.patch("/:_id", [...updateValidators, jwtMiddleware], async (req, res) => {
+router.patch("/:_id", jwtMiddleware, async (req, res) => {
   const { _id } = req.params;
   const post = await Post.findOne({ _id });
 
   if(!post) return res.sendStatus(404);
-  if(req.user._id !== post.user._id) return res.sendStatus(401);  
+  if(!req.user._id.equals(post.user._id)) return res.sendStatus(401);  
 
-  post.title = req.body.title;
-  post.body = req.body.body;
+  if(req.body.title) post.title = req.body.title;
+  if(req.body.body) post.body = req.body.body;
   await post.save();
 
   res.send(post);
@@ -67,7 +63,7 @@ router.delete("/:_id", jwtMiddleware, async (req, res) => {
   const post = await Post.findOne({ _id });
 
   if(!post) return res.sendStatus(404);
-  if(req.user._id !== post.user._id) return res.sendStatus(401);
+  if(!req.user._id.equals(post.user._id)) return res.sendStatus(401);  
 
   await post.remove();
 

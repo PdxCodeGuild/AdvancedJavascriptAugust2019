@@ -38,7 +38,7 @@ const getToken = async (user=validUser) => {
   return res.body.token;
 }
 
-describe("src/controllers/user.controller.js", () => {
+describe("src/controllers/auth.controller.js", () => {
   it("POST /auth/sign-up: valid user", async () => {
     const res = await signUpUser();
 
