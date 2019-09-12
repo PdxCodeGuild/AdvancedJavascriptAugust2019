@@ -1,0 +1,33 @@
+@import "~slick-carousel/slick/slick.css"; 
+@import "~slick-carousel/slick/slick-theme.css";
+
+.Hero {
+  background-image: url("../assets/fried-2.jpg");
+
+  background-position: center;
+  background-size: cover;
+
+  padding: 5rem;
+
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1;
+
+  h1 {
+    font-family: "Slabo 13px";
+    font-weight: bold;
+    font-size: 7vw;
+    text-shadow: 0px 10px 15px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.image {
+  img {
+    width: 100%;
+  }
+}

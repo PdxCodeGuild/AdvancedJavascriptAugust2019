@@ -1,0 +1,16 @@
+.Footer {
+  background-color: black;
+  color: white;
+
+  &__links {
+    display: flex;
+    justify-content: space-between;
+  
+    .Link {
+      text-decoration: none;
+      color: white;
+  
+      padding: 3rem;
+    }
+  }
+}

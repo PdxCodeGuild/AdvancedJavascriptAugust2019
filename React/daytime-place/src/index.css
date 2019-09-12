@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Slabo+13px|Ultra&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Slabo 13px", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "Ultra", sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+:root {
+  --background: #CC1061;
+}

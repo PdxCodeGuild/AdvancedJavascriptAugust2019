@@ -1,0 +1,29 @@
+.NavBar {
+  padding: 2rem;
+  background: var(--background);
+  color: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  z-index: 5;
+  box-shadow: 0px -2px 25px rgba(0, 0, 0, 0.5);
+
+  &__logo {
+    font-size: 2rem;
+    font-family: "Ultra";
+  }
+
+  &__links {
+    display: flex;
+
+    .Link {
+      margin-right: 1rem;
+      text-decoration: none;
+
+      color: white;
+    }
+  }
+}
