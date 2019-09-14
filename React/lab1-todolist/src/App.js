@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useGlobal } from 'reactn';
 import './App.css';
 
 
@@ -23,13 +23,17 @@ const CheckBox = (props) => {
 }
 
 const Item = (props) => {
+  const [loggedIn, setLoggedIn] = useGlobal("loggedIn");
+
+
+
   const { item, onToggle, onRemove, index } = props;
 
   return (
     <li>
       <CheckBox onChange={() => onToggle(index)} checked={item.completed} />
       <span>{item.task}</span>
-      <button onClick={() => onRemove(index)}>X</button>
+      <button onClick={() => { onRemove(index); setLoggedIn(true) }}>X</button>
     </li>
   )
 }
@@ -46,7 +50,7 @@ const Input = (props) => {
 
 const List = () => {
   const [task, setTask] = useState("");
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useGlobal("items");
 
   const handleChange = (event) => {
     setTask(event.target.value);
@@ -114,8 +118,14 @@ const List = () => {
 }
 
 const App = () => {
+  const [loggedIn, setLoggedIn] = useGlobal("loggedIn");
+
   return (
     <div>
+      <span>{JSON.stringify(loggedIn)}</span>
+      <List />
+      <List />
+      <List />
       <List />
     </div>
   );

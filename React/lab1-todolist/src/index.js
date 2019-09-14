@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { setGlobal, addCallback } from 'reactn';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+const rehydrate = () => {
+  return JSON.parse(localStorage.getItem("state")) || {
+    items: [],
+    loggedIn: false,
+  }
+}
+
+setGlobal(rehydrate())
+
+addCallback((state) => {
+  localStorage.setItem("state", JSON.stringify(state));
+
+  return null;
+});
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
