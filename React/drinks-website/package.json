@@ -1,0 +1,17 @@
+{
+  "name": "drinks-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently -p [{name}] -c bgBlue.bold,bgGreen.bold -n api,ui 'cd api && yarn start' 'cd ui && yarn start'",
+    "install": "concurrently -p [{name}] -c bgBlue.bold,bgGreen.bold -n api,ui 'cd api && yarn' 'cd ui && yarn'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^4.1.2"
+  }
+}
