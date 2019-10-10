@@ -1,0 +1,18 @@
+{
+  "name": "fullstackjs-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "concurrent": "concurrently -p [{name}] -c bgBlue.bold,bgGreen.bold -n API,UI",
+    "start": "yarn concurrent 'cd api && yarn start' 'cd ui && yarn start'",
+    "install": "yarn concurrent 'cd api && yarn' 'cd ui && yarn'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^4.1.2"
+  }
+}
