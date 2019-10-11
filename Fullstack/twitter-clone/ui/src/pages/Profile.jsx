@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useGlobal } from "reactn";
 import client from "../api/client";
+import Follow from "../components/Follow";
 
 const Profile = () => {
   const [profile, setProfile] = useState(null);
@@ -23,7 +24,11 @@ const Profile = () => {
     <div>
       <h1>Profile:</h1>
       {profile && (
-        <em>{profile.email}</em>
+        <div>
+          <div>
+            <em>{profile.email}</em>
+          </div>
+        </div>
       )}
     </div>
   )

@@ -9,14 +9,10 @@ const jwtMiddleware = require("../helpers/jwtMiddleware");
 
 const router = AsyncRouter();
 
-const followValidators = [
-  check("user").exists(),
-]
-
 // Follow a user
 router.post(
   "/follow/:_id", 
-  [...followValidators, jwtMiddleware, handleValidationErrors],
+  [jwtMiddleware],
   async (req, res) => {
     const followUser = await User.findById(req.params._id);
 
@@ -33,6 +29,18 @@ router.post(
     res.send(req.user);
   }
 );
+
+router.get(
+  "/following/:_id",
+  [jwtMiddleware],
+  async (req, res) => {
+    console.log(req.user.following[0], req.params._id)
+    const isFollowing = req.user.following.find((_id) => _id.equals(req.params._id));
+
+    if(isFollowing) return res.send(200);
+    else return res.send(404);
+  }
+)
 
 // Get chirps for a user
 router.get("/profile/:userId", async (req, res) => {
