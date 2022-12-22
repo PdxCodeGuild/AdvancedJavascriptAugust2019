@@ -17,7 +17,7 @@
     "express": "^4.17.1",
     "express-async-router": "^0.1.15",
     "express-validator": "^6.1.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.6.9",
     "morgan": "^1.9.1"
   },
